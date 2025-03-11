@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "outDir": "./build",
+      "target": "ES2020",
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "skipLibCheck": true,
+      "allowJs": true,
+      "checkJs": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "exactOptionalPropertyTypes": true,
+      "noImplicitReturns": true,
+      "noImplicitOverride": true,
+      "useUnknownInCatchVariables": true
+    },
+    "include": ["src/**/*"]
+  }
