@@ -52,7 +52,7 @@ class AuthService {
     // TODO: redirect to the login page
 
     localStorage.removeItem('authToken');
-    window.location.assign('/login');
+    window.location.assign('/');
     
   }
 }
