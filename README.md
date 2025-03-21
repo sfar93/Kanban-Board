@@ -28,7 +28,9 @@ test 2, ticket page
 test 3. testing functionalty of ticket processs through adding, edit, and deleting. 
 
 Usage
-undefined
+https://kanban-board-fj1q.onrender.com/
+
+![alt text](image.png)
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
