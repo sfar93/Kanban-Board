@@ -19,7 +19,6 @@ const Board = () => {
   const checkLogin = () => {
     if(auth.loggedIn()) {
       setLoginCheck(true);
-     
     }
   };
 

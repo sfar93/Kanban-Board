@@ -5,8 +5,8 @@ declare module 'express-serve-static-core' {
     user?: JwtPayload;
   }
 }
-import * as jwt from "jsonwebtoken";
-// import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
+
 
 interface JwtPayload {
   username: string;
@@ -18,19 +18,18 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
   if (!token){
-    return res.sendStatus (401);
-  }else{
-    const secret = process.env.JWT_SECRET;
-    if (!secret) {
-      return res.sendStatus(500); // Internal Server Error if secret is not defined
-    }
-    jwt.verify(token, secret, (err, user) => {
-      if (err) {
-        return res.sendStatus(403); // Forbidden if token is invalid
-      }
-      req.user = user as JwtPayload;
-      return next();
-    });
+    return res.sendStatus (401);;
   }
-  return; // Ensure all code paths return a value
+  const secret = process.env.JWT_SECRET_KEY;
+  if (!secret) {
+    return res.sendStatus(500); // Internal Server Error if secret is not defined
+  }
+  jwt.verify(token, secret, (err, user) => {
+    if (err) {
+      return res.sendStatus(403); // Forbidden if token is invalid
+    }
+    req.user = user as JwtPayload;
+    return next();
+  });
+  return; 
 }

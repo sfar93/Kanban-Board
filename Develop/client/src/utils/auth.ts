@@ -1,4 +1,4 @@
-import { JwtPayload, jwtDecode } from 'jwt-decode';
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
 class AuthService {
   getProfile() {
@@ -16,16 +16,15 @@ class AuthService {
   }
 
   loggedIn() {
-    // TODO: return a value that indicates if the user is logged in
     const token = this.getToken();
-    return token ? !this.isTokenExpired(token) : false;
+    return token;
   }
   
   isTokenExpired(token: string): boolean {
     // TODO: return a value that indicates if the token is expired
     try {
       const decoded = jwtDecode<JwtPayload>(token);
-      if (decoded.exp && decoded.exp < Date.now() / 1000) {
+      if (decoded.exp && decoded.exp < Date.now() / 100) {
         return true;
       }
       return false;
@@ -40,12 +39,12 @@ class AuthService {
     return localStorage.getItem('authToken') || '';
   }
 
-  login(idToken: string) {
+  login(Token: string) {
     // TODO: set the token to localStorage
     // TODO: redirect to the home page
 
-    localStorage.setItem('authToken', idToken);
-    window.location.href = '/';
+    localStorage.setItem('authToken', Token);
+    window.location.assign('/');
   }
 
   logout() {
@@ -53,7 +52,7 @@ class AuthService {
     // TODO: redirect to the login page
 
     localStorage.removeItem('authToken');
-    window.location.href = '/login';
+    window.location.assign('/login');
     
   }
 }

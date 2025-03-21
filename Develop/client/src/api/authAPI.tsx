@@ -15,10 +15,7 @@ const login = async (userInfo: UserLogin) => {
     if (!response.ok) {
       throw new Error('invalid user API response, check network tab!');
     }
-
-    if(data.token){
-      localStorage.setItem('token', data.token);
-    }
+    
     return data;
   }
   catch (err) {
